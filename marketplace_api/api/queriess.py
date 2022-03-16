@@ -70,7 +70,7 @@ def getTreasury_resolver(obj, info,limit,offset):
 
         print(events)
         print()
-        print()     
+        print()
 
         payload = {
             "success": True,
@@ -84,5 +84,9 @@ def getTreasury_resolver(obj, info,limit,offset):
             "errors": [str(error)]
         }
 
-    # print(payload)
+
+    print()
+    print('Payload')
+    print(payload)
+    print()
     return payload
