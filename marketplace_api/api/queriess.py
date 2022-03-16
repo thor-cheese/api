@@ -25,6 +25,7 @@ def listEvents_resolver(obj, info,limit,offset):
 
     try:
         print(1)
+
         # print('events:')
 
         events = [event.to_dict() for event in treasury.query.limit(limit).offset(offset).all()]
@@ -49,8 +50,13 @@ def listEvents_resolver(obj, info,limit,offset):
 
 
 def getTreasury_resolver(obj, info,limit,offset):
+
     print('treasury')
+
     try:
+        print(obj)
+        print(info)
+        print('hi')
         print(2)
         events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
 
