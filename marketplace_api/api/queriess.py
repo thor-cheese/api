@@ -54,10 +54,20 @@ def getTreasury_resolver(obj, info,limit,offset):
     print('treasury')
 
     try:
-        print(obj)
-        print(info)
         print('hi')
         print(2)
+        print(limit)
+        print(offset)
+        print(obj)
+        print(info)
+        print(treasuries.query.limit(limit).offset(offset).all())
+        print('events')
+        print()
+        print()
+        print(events)
+        print()
+        print()        
+
         events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
 
         payload = {
@@ -72,5 +82,5 @@ def getTreasury_resolver(obj, info,limit,offset):
             "errors": [str(error)]
         }
 
-    print(payload)
+    # print(payload)
     return payload
