@@ -1,0 +1,26 @@
+{
+  "name": "ronin_scanner",
+  "version": "1.0.0",
+  "main": "scan.js",
+  "directories": {
+    "lib": "lib"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "cli-progress": "^3.10.0",
+    "fastq": "^1.13.0",
+    "pg": "^8.7.3",
+    "pg-native": "^2.0.0",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.16.2",
+    "sequelize-cli": "^6.4.1",
+    "web3": "^1.7.0"
+  },
+  "devDependencies": {},
+  "description": ""
+}

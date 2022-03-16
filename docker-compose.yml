@@ -1,0 +1,67 @@
+version: '3.8'
+
+services:
+  web:
+    build: ./marketplace_api
+    restart: always
+    # entrypoint: flask
+    # command: run -h 0.0.0.0
+    command: gunicorn --bind 0.0.0.0:5000 app:app
+    volumes:
+      - ./marketplace_api/:/usr/src/app/
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env
+    networks:
+      - flask_network
+
+  proxy:
+    build: ./proxy
+    restart: always
+    ports:
+      - 80:80
+    networks:
+      - flask_network
+  db:
+    image: postgres:12-alpine
+    restart: always
+    container_name: db
+    ports:
+      - 5435:5432
+    volumes:
+      - /mnt/disks/ronin-data:/var/lib/postgresql/data
+      - /home/alexander_d_devoid/production_api/postgresql.conf:/etc/postgres/postgresql.conf
+      - /home/alexander_d_devoid/production_api/pg_hba.conf:/etc/postgres/pg_hba.conf
+    command: "-c 'stats_temp_directory=/tmp'"
+    command: "-c 'hba_file=/etc/postgres/pg_hba.conf'"
+    command: "-c 'config_file=/etc/postgres/postgresql.conf'"
+    env_file:
+      - ./.env
+    networks:
+      - flask_network
+  scanner:
+    depends_on:
+      - "db"
+    build: ./scanner
+    restart: always
+    command: node scan3.js
+    volumes:
+      - ./scanner/:/usr/src/app/
+    env_file:
+      - ./.env
+    networks:
+      - flask_network
+  treasury_scan:
+    build: ./treasury_scan
+    restart: always
+    command: node scan_address.js
+    volumes:
+      - ./treasury_scan/:/usr/src/app/
+    env_file:
+      - ./.env
+    networks:
+      - flask_network
+
+networks:
+  flask_network:

@@ -1,0 +1,6 @@
+{'id': 11, 'listingIndex': 7277, 'startingPrices': [59800000000000000], 'endingPrices'
+: [59800000000000000], 'durations': [86400], 'startingTimestamps': 1616430119, 'exchangeTokens': None, 'totalPrice'
+: None, 'token': None, 'buyer': None, 'seller': '0x02eac86666A41cc53fD1B5775089F5F66aC753a0', 'timestamp': '2021-04
+-26T12:32:05', 'txn': '0x6c5a1bd3b72e0d203829aa436fe69da68ac4fc473df75f141784f6b9b9ed7674', 'Event': 'AuctionCreate
+
+d', 'tokenNumbersInput': None}

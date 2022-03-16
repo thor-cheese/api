@@ -1,0 +1,6 @@
+ariadne==0.14.1
+Flask==2.0.2
+flask_cors==3.0.10
+flask_sqlalchemy==2.5.1
+psycopg2-binary==2.9.3
+gunicorn>=19,<20F

@@ -1,0 +1,67 @@
+scalar Price
+scalar AuctionDurations
+scalar ExchangeTokens
+scalar TokenNumbers
+scalar Date
+scalar Block
+scalar Event_type
+
+
+schema {
+    query: Query
+}
+
+type Event {
+    id: Int
+    address: String
+    blockNumber: Int
+    transactionHash: String
+    transactionIndex: String
+    logIndex: Int
+    removed: Boolean
+    id_from_block: String
+    seller: String
+    listingIndex: Int
+    startingPrices: Price
+    endingPrices: Price
+    exchangeTokens: ExchangeTokens
+    durations: AuctionDurations
+    startingTimestampsUnix: Int
+    event: String
+
+}
+
+type Balance {
+    id: Int
+
+    blockNumber: Block
+    date: Date
+    ticker: String
+    value: Float
+    tokens: Float
+
+}
+
+type EventResult {
+    success: Boolean!
+    errors: [String]
+    event: Event_type
+}
+
+type EventsResult {
+    success: Boolean
+    errors: [String]
+    events: [Event]
+}
+
+type TreasuryResult {
+    success: Boolean
+    errors: [String]
+    events: [Balance]
+}
+
+type Query {
+    listEvents(limit: Int!,offset:Int!): EventsResult
+    getEvent(id: ID!): EventResult!
+    getTreasury(limit: Int!,offset:Int!): TreasuryResult
+}
