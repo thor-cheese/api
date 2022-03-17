@@ -47,7 +47,7 @@ const Treasury = sequelize.define('treasury', {
     primaryKey: true
   },
   blockNumber: {
-    type: Sequelize.BIGINT,
+    type: Sequelize.INTEGER,
     unique: false
   },
   date: {

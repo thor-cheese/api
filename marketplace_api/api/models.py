@@ -54,7 +54,7 @@ class treasuries(db.Model):
 
     _id = Column('id' ,Integer, primary_key=True)
 
-    blockNumber= Column('blockNumber',BigInteger)
+    blockNumber= Column('blockNumber',Integer)
     date= Column('date',BigInteger)
     ticker= Column('ticker',String)
     value= Column('value',Float)

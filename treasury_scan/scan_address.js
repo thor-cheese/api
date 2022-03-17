@@ -96,7 +96,7 @@ for (var i = 0; i < abis.length; i++) {
 
 
 }
-
+run()
 cron.schedule('0 0 * * *', () => {
   console.log('running a task every minute');
   run()
