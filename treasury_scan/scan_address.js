@@ -52,7 +52,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     var value = tickerData['data']['market_data']['current_price']['usd'];
 
     //
-    var treasuryData =[{blockNumber:blockNumber,
+    var treasuryData =[{block:blockNumber,
                        date:timestamp,
                        ticker:ticker,
                        value:value,
