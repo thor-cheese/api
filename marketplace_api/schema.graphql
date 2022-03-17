@@ -33,7 +33,7 @@ type Event {
 
 type Balance {
     id: Int
-    blockNumber: Float
+    blockNumber: Block
     date: Date
     ticker: String
     value: Float
