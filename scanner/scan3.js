@@ -475,7 +475,7 @@ async function run(cnt){
       console.log(error);
     }
   })
-
+  console.log([startCancelled,startCreated,startSuccessful]);
   start = Math.min(...[startCancelled,startCreated,startSuccessful]);
   // }else{
   // }
