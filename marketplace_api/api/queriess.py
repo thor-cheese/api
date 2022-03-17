@@ -90,3 +90,31 @@ def getTreasury_resolver(obj, info,limit,offset):
     print(payload)
     print()
     return payload
+
+
+
+
+
+#     # Write your query or mutation here
+# query Query($getLimit:Int!,$getOffset:Int!){
+#   getTreasury(limit:$getLimit,offset:$getOffset){
+#     success
+# 		errors
+# 		events{
+#       id
+#       blockNumber
+#       date
+#       ticker
+#       value
+#       tokens
+#     }
+#   }
+#
+# }
+#
+# {
+#
+#   "getLimit": 100,
+#   "getOffset":0
+#
+# }
