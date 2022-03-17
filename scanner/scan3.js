@@ -427,7 +427,7 @@ var global_blockCntPerRequest = 50;
 
 async function run(cnt){
 
-  var start;
+  var start
   var startCancelled;
   var startCreated;
   var startSuccessful;
@@ -442,17 +442,24 @@ async function run(cnt){
 
           console.log('maxCreated');
           console.log(maxCreated);
-      startCreated = maxCreated;
+      // startCreated = maxCreated;
 
       const maxSuccessful = await AuctionSuccessful.max("blockNumber",{
             transaction:t
           });
-      startSuccessful = maxSuccessful;
+
+      console.log( maxSuccessful);
+      // startSucce ssful = maxSuccessful;
 
       const maxCancelled= await AuctionCancelled.max("blockNumber",{
             transaction:t
           });
-      startCancelled = maxCancelled;
+
+      console.log( maxCancelled);
+      // startCancelled = maxCancelled;
+
+      console.log([startCancelled,startCreated,maxCancelled]);
+      start = Math.min(...[startCancelled,startCreated,maxCancelled]);
 
     }
     catch (error) {
@@ -487,8 +494,7 @@ async function run(cnt){
   // })
 
   console.log('array dd');
-  console.log([startCancelled,startCreated,startSuccessful]);
-  start = Math.min(...[startCancelled,startCreated,startSuccessful]);
+
   // }else{
   // }
 
