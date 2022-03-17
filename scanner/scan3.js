@@ -433,7 +433,7 @@ async function run(cnt){
   var startSuccessful;
   // start =11537875;
 
-  if(start != null){
+  // if(start){
   await sequelize.transaction(async (t) => {
     try{
       const maxCreated = await AuctionCreated.max("blockNumber",{
@@ -477,8 +477,8 @@ async function run(cnt){
   })
 
   start = Math.min(...[startCancelled,startCreated,startSuccessful]);
-  }else{
-  }
+  // }else{
+  // }
 
   console.log(start)
 
