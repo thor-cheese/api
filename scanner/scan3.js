@@ -427,7 +427,7 @@ var global_blockCntPerRequest = 50;
 
 async function run(cnt){
 
-  var start
+  var start;
   var startCancelled;
   var startCreated;
   var startSuccessful;
@@ -441,25 +441,15 @@ async function run(cnt){
           });
 
           console.log('maxCreated');
-          console.log(maxCreated);
-      // startCreated = maxCreated;
+
+      startCreated = maxCreated;
+      console.log(maxCreated);
+      console.log(startCreated);
 
       const maxSuccessful = await AuctionSuccessful.max("blockNumber",{
             transaction:t
           });
-
-      console.log( maxSuccessful);
-      // startSucce ssful = maxSuccessful;
-
-      const maxCancelled= await AuctionCancelled.max("blockNumber",{
-            transaction:t
-          });
-
-      console.log( maxCancelled);
-      // startCancelled = maxCancelled;
-
-      console.log([startCancelled,startCreated,maxCancelled]);
-      start = Math.min(...[startCancelled,startCreated,maxCancelled]);
+      startSuccessful = maxSuccessful;
 
     }
     catch (error) {
@@ -467,34 +457,38 @@ async function run(cnt){
     }
   })
 
-  // await sequelize.transaction(async (t) => {
-  //   try{
-  //     const maxSuccessful = await AuctionSuccessful.max("blockNumber",{
-  //           transaction:t
-  //         });
-  //     startSuccessful = maxSuccessful;
-  //
-  //   }
-  //   catch (error) {
-  //     console.log(error);
-  //   }
-  // })
-  //
-  // await sequelize.transaction(async (t) => {
-  //   try{
-  //     const maxCancelled= await AuctionCancelled.max("blockNumber",{
-  //           transaction:t
-  //         });
-  //     startCancelled = maxCancelled;
-  //
-  //   }
-  //   catch (error) {
-  //     console.log(error);
-  //   }
-  // })
+  await sequelize.transaction(async (t) => {
+    try{
+      const maxSuccessful = await AuctionSuccessful.max("blockNumber",{
+            transaction:t
+          });
+      startSuccessful = maxSuccessful;
+      console.log('maxCreated');
+      console.log(startSuccessful);
+      console.log(maxSuccessful);
 
-  console.log('array dd');
+    }
+    catch (error) {
+      console.log(error);
+    }
+  })
 
+  await sequelize.transaction(async (t) => {
+    try{
+      const maxCancelled= await AuctionCancelled.max("blockNumber",{
+            transaction:t
+          });
+      startCancelled = maxCancelled;
+      console.log(startCancelled);
+      console.log(maxCancelled);
+
+    }
+    catch (error) {
+      console.log(error);
+    }
+  })
+  console.log([startCancelled,startCreated,startSuccessful]);
+  start = Math.min(...[startCancelled,startCreated,startSuccessful]);
   // }else{
   // }
 
