@@ -46,7 +46,7 @@ const Treasury = sequelize.define('treasury', {
     autoIncrement: true,
     primaryKey: true
   },
-  blockNumber: {
+  block: {
     type: Sequelize.INTEGER,
     unique: false
   },
