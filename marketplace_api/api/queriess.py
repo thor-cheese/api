@@ -1,5 +1,6 @@
 from .models import auction_created, treasuries
 from api import db
+from sqlalchemy import func
 # from flask_sqlalchemy import text
 
 
@@ -68,7 +69,11 @@ def getTreasury_resolver(obj, info,limit,offset):
 
         events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
 
-        maxDate = treasuries.query.max(treasuries.date)
+        maxDate = treasuries.query(func.max(treasuries.date)).scalar()
+
+        print(maxDate)
+
+
 
         minDate = treasuries.query.min(treasuries.date)
 
