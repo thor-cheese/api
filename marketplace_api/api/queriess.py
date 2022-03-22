@@ -75,7 +75,9 @@ def getTreasury_resolver(obj, info,limit,offset):
 
 
 
-        minDate = treasuries.query.min(treasuries.date)
+
+
+        minDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
         print(events)
         print()
