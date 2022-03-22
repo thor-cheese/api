@@ -47,6 +47,8 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     console.log(ticker);
     var tickerData = await CoinGeckoClient.coins.fetch(ticker);
 
+    // console.log(tickerData['data']['name']);
+
     console.log(tickerData['data']['market_data']['current_price']['usd']);
 
     var value = tickerData['data']['market_data']['current_price']['usd'];
@@ -57,7 +59,11 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
                        ticker:ticker,
                        value:value,
                        tokens:tokens,
-                       wallet:walletAddress }]
+                       wallet:walletAddress,
+                       name:tickerData['data']['name']
+                       }]
+
+                       // console.log(treasuryData);
 
     const result = await sequelize.transaction(async (t) => {
 

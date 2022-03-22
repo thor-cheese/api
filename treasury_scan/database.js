@@ -69,6 +69,10 @@ const Treasury = sequelize.define('treasury', {
   wallet: {
     type: Sequelize.FLOAT,
     unique: false
+  },
+  name: {
+    type: Sequelize.STRING,
+    unique: false
   }
 
 })

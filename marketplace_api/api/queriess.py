@@ -68,6 +68,10 @@ def getTreasury_resolver(obj, info,limit,offset):
 
         events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
 
+        maxDate = treasuries.query.max(treasuries.date)
+
+        minDate = treasuries.query.min(treasuries.date)
+
         print(events)
         print()
         print()
@@ -75,6 +79,8 @@ def getTreasury_resolver(obj, info,limit,offset):
         payload = {
             "success": True,
             "errors":['none'],
+            'minDate':minDate,
+            'maxDate': maxDate,
             "events": events
         }
 
