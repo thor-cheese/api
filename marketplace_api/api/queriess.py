@@ -86,8 +86,8 @@ def getTreasury_resolver(obj, info,limit,offset):
         payload = {
             "success": True,
             "errors":['none'],
-            'minDate':minDate,
-            'maxDate': maxDate,
+            'mindate':minDate,
+            'maxdate': maxDate,
             "events": events
         }
 
