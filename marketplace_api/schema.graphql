@@ -55,8 +55,8 @@ type EventsResult {
 type TreasuryResult {
     success: Boolean
     errors: [String]
-    mindate:Date
-    maxdate:Date
+    mindate: Date
+    maxdate: Date
     events: [Balance]
 }
 
