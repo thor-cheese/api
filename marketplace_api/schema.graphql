@@ -37,6 +37,7 @@ type Balance {
     value: Float
     tokens: Float
     block: Int
+    name: String
 
 }
 
