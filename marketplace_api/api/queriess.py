@@ -50,12 +50,12 @@ def listEvents_resolver(obj, info,limit,offset):
     return payload
 
 
-def getTreasury_resolver(obj, info,limit,offset,date):
+def getTreasury_resolver(obj, info,date):
 
     print('treasury')
 
     try:
-        
+
         # events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
 
         date_record = treasuries.query.query.filter_by(datestring=date).first()
