@@ -3,23 +3,7 @@ from api import db
 from sqlalchemy import func
 # from flask_sqlalchemy import text
 
-def object_to_dict(obj, found=None):
-    if found is None:
-        found = set()
-    mapper = class_mapper(obj.__class__)
-    columns = [column.key for column in mapper.columns]
-    get_key_value = lambda c: (c, getattr(obj, c).isoformat()) if isinstance(getattr(obj, c), datetime) else (c, getattr(obj, c))
-    out = dict(map(get_key_value, columns))
-    for name, relation in mapper.relationships.items():
-        if relation not in found:
-            found.add(relation)
-            related_obj = getattr(obj, name)
-            if related_obj is not None:
-                if relation.uselist:
-                    out[name] = [object_to_dict(child, found) for child in related_obj]
-                else:
-                    out[name] = object_to_dict(related_obj, found)
-    return out
+
 
 
 
@@ -72,6 +56,10 @@ def listEvents_resolver(obj, info,limit,offset):
 
 def getTreasury_resolver(obj, info,date):
 
+    def object_as_dict(obj):
+    return {c.key: getattr(obj, c.key)
+            for c in inspect(obj).mapper.column_attrs}
+
     print('treasury')
 
     try:
@@ -88,7 +76,7 @@ def getTreasury_resolver(obj, info,date):
 
         maxDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
-        print(object_to_dict(maxDate))
+        print(object_as_dict(maxDate))
 
 
 
@@ -96,7 +84,7 @@ def getTreasury_resolver(obj, info,date):
 
         record = None
         if date_record is None:
-            record = [object_to_dict(maxDate)]
+            record = [object_as_dict(maxDate)]
         else:
             record = date_record
 
