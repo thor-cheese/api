@@ -60,6 +60,9 @@ def getTreasury_resolver(obj, info,date):
 
         date_record = treasuries.query.filter_by(datestring=date).all()
 
+        print('date_record')
+        print(date_record)
+
         maxDate = treasuries.query.order_by(treasuries.date.desc()).first().date
 
 
