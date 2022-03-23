@@ -72,7 +72,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
                        datestring: date
                        }]
 
-                       // console.log(treasuryData);
+                       console.log(treasuryData);
 
     const result = await sequelize.transaction(async (t) => {
 
