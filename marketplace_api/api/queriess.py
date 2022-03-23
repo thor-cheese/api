@@ -57,7 +57,7 @@ def getTreasury_resolver(obj, info,date):
     try:
 
         date_record = [event.to_dict() for event in treasuries.query.filter_by(datestring=date).all()]
-        print(date)
+        print(date_record)
         # date_record = treasuries.query.filter_by(datestring=date).first().to_dict()
 
 
