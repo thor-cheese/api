@@ -73,6 +73,10 @@ const Treasury = sequelize.define('treasury', {
   name: {
     type: Sequelize.STRING,
     unique: false
+  },
+  datestring: {
+    type: Sequelize.STRING,
+    unique: false
   }
 
 })

@@ -56,9 +56,12 @@ class treasuries(db.Model):
 
     block= Column('block',Integer)
     date= Column('date',BigInteger)
+    datestring= Column('datestring',String)
     ticker= Column('ticker',String)
+    name= Column('name',String)
     value= Column('value',Float)
     tokens= Column('tokens',Float)
+
 
     def to_dict(self):
         return {
@@ -67,5 +70,7 @@ class treasuries(db.Model):
             "date":self.date,
             "ticker":self.ticker,
             "value":self.value,
-            "tokens":self.tokens
+            "tokens":self.tokens,
+            "datestring":self.datestring,
+            "name":self.name
         }

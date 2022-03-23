@@ -64,5 +64,5 @@ type TreasuryResult {
 type Query {
     listEvents(limit: Int!,offset:Int!): EventsResult
     getEvent(id: ID!): EventResult!
-    getTreasury(limit: Int!,offset:Int!): TreasuryResult
+    getTreasury(getdate:String!): TreasuryResult
 }
