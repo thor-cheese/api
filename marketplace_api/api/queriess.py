@@ -57,8 +57,7 @@ def listEvents_resolver(obj, info,limit,offset):
 def getTreasury_resolver(obj, info,date):
 
     def object_as_dict(obj):
-    return {c.key: getattr(obj, c.key)
-            for c in inspect(obj).mapper.column_attrs}
+        return {c.key: getattr(obj, c.key) for c in inspect(obj).mapper.column_attrs}
 
     print('treasury')
 
