@@ -73,9 +73,9 @@ def getTreasury_resolver(obj, info,date):
 
         record = None
         if date_record is None:
-            record = maxDate.to_dict()
-        else:
             record = [event.to_dict() for event in treasuries.query.filter_by(datestring=maxDate.datestring).all()]
+        else:
+            record = date_record
 
 
 
