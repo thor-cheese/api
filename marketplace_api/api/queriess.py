@@ -77,8 +77,11 @@ def getTreasury_resolver(obj, info,date):
         maxDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
         print('max')
+        print(maxDate)
+        print(date_record)
         print(maxDate.to_dict())
         print('date_record')
+
         print(date_record.to_dict())
 
 
