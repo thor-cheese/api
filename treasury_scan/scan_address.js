@@ -42,6 +42,8 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
 
     var tokens = bn.toString()
 
+    var timestamp1 = new Date().now();
+
     var timestamp = new Date();
 
     let year =   new Date(timestamp).getFullYear();
@@ -62,7 +64,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     //
     var treasuryData =[{
                        block:blockNumber,
-                       date:timestamp,
+                       date:timestamp1,
 
                        ticker:ticker,
                        value:value,
