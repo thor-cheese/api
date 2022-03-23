@@ -71,11 +71,13 @@ def getTreasury_resolver(obj, info,date):
         print('date_record')
         print(date_record)
 
+        date_record = treasuries.query.filter_by(datestring=date).all()
 
 
         maxDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
         print(maxDate.to_dict())
+        print(date_record.to_dict())
 
 
 
@@ -83,9 +85,9 @@ def getTreasury_resolver(obj, info,date):
 
         record = None
         if date_record is None:
-            record = [maxDate.to_dict()]
+            record = maxDate.to_dict()
         else:
-            record = date_record
+            record = date_record.to_dict()
 
 
 
