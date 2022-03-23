@@ -42,7 +42,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
 
     var tokens = bn.toString()
 
-    var timestamp= Date.now();
+    var timestamp = new Date();
 
     let year =   new Date(timestamp).getFullYear();
     let month = new Date(timestamp).getMonth() + 1;
