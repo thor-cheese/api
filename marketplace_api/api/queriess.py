@@ -57,8 +57,9 @@ def getTreasury_resolver(obj, info,date):
     try:
 
         # events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
-
+        print(date)
         date_record = treasuries.query.filter_by(datestring=date).all()
+
 
         print('date_record')
         print(date_record)
