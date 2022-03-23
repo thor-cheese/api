@@ -56,8 +56,8 @@ def listEvents_resolver(obj, info,limit,offset):
 
 def getTreasury_resolver(obj, info,date):
 
-    def object_as_dict(obj):
-        return {c.key: getattr(obj, c.key) for c in inspect(obj).mapper.column_attrs}
+    # def object_as_dict(obj):
+    #     return {c.key: getattr(obj, c.key) for c in inspect(obj).mapper.column_attrs}
 
     print('treasury')
 
@@ -75,7 +75,7 @@ def getTreasury_resolver(obj, info,date):
 
         maxDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
-        print(object_as_dict(maxDate))
+        print(maxDate._asdict())
 
 
 
@@ -83,7 +83,7 @@ def getTreasury_resolver(obj, info,date):
 
         record = None
         if date_record is None:
-            record = [object_as_dict(maxDate)]
+            record = [maxDate._asdict()]
         else:
             record = date_record
 
