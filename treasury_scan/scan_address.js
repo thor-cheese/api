@@ -60,14 +60,16 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     var value = tickerData['data']['market_data']['current_price']['usd'];
 
     //
-    var treasuryData =[{block:blockNumber,
+    var treasuryData =[{
+                       block:blockNumber,
                        date:timestamp,
-                       datestring: date,
+
                        ticker:ticker,
                        value:value,
                        tokens:tokens,
                        wallet:walletAddress,
-                       name:tickerData['data']['name']
+                       name:tickerData['data']['name'],
+                       datestring: date
                        }]
 
                        // console.log(treasuryData);
