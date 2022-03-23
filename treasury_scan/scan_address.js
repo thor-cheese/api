@@ -48,6 +48,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     let month = new Date(timestamp).getMonth() + 1;
     let day = new Date(timestamp).getDate();
     let date = `${month}-${day}-${year}`
+    console.log(date);
 
     console.log(ticker);
     var tickerData = await CoinGeckoClient.coins.fetch(ticker);
