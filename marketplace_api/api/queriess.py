@@ -72,7 +72,7 @@ def getTreasury_resolver(obj, info,date):
 
         record = None
         if date_record is None:
-            record = [maxDate.to_dict()]
+            record = [dict(maxDate)]
         else:
             record = date_record
 
