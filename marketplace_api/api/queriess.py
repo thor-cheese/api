@@ -72,7 +72,7 @@ def getTreasury_resolver(obj, info,date):
         minDate = treasuries.query.order_by(treasuries.date.asc()).first().datestring
 
         record = None
-        if date_record is None:
+        if len(date_record) == 0:
             record = [event.to_dict() for event in treasuries.query.filter_by(datestring=maxDate.datestring).all()]
         else:
             record = date_record
