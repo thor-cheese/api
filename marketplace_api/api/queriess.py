@@ -68,6 +68,8 @@ def getTreasury_resolver(obj, info,date):
 
         maxDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
+        print([dict(maxDate)])
+
         minDate = treasuries.query.order_by(treasuries.date.asc()).first().date
 
         record = None
