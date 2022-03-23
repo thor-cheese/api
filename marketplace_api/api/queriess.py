@@ -56,22 +56,23 @@ def getTreasury_resolver(obj, info,date):
 
     try:
 
-        # events = [event.to_dict() for event in treasuries.query.limit(limit).offset(offset).all()]
+        date_record = [event.to_dict() for event in treasuries.query.filter_by(datestring=date).limit(limit).offset(offset).all()]
         print(date)
-        date_record = treasuries.query.filter_by(datestring=date).first().to_dict()
+        # date_record = treasuries.query.filter_by(datestring=date).first().to_dict()
 
 
         print('date_record')
         print(date_record)
 
-        maxDate = treasuries.query.order_by(treasuries.date.desc()).first().date
+        maxDateD = treasuries.query.order_by(treasuries.date.desc()).first().date
 
+        maxDate = treasuries.query.order_by(treasuries.date.desc()).first()
 
         minDate = treasuries.query.order_by(treasuries.date.asc()).first().date
 
         record = None
         if date_record is None:
-            record = maxDate
+            record = [maxDate.to_dict()]
         else:
             record = date_record
 
@@ -81,7 +82,7 @@ def getTreasury_resolver(obj, info,date):
             "success": True,
             "errors":['none'],
             'mindate':minDate,
-            'maxdate': maxDate,
+            'maxdate': maxDate.date,
             "events": record
         }
 
