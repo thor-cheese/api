@@ -56,7 +56,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     var tickerData = await CoinGeckoClient.coins.fetch(ticker);
 
     // console.log(tickerData['data']['name']);
-
+    console.log(tickerData['data']['symbol']);
     console.log(tickerData['data']['market_data']['current_price']['usd']);
 
     var value = tickerData['data']['market_data']['current_price']['usd'];
@@ -65,7 +65,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
     var treasuryData =[{
                        block:blockNumber,
                        date:timestamp1,
-
+                       symbol:tickerData['data']['symbol'].toUpperCase(),
                        ticker:ticker,
                        value:value,
                        tokens:tokens,

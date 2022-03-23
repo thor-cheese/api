@@ -39,6 +39,7 @@ type Balance {
     block: Int
     name: String
     datestring: String
+    symbol: String
 
 }
 

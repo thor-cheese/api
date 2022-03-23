@@ -61,6 +61,7 @@ class treasuries(db.Model):
     name= Column('name',String)
     value= Column('value',Float)
     tokens= Column('tokens',Float)
+    symbol=Column('symbol',Float)
 
 
     def to_dict(self):
@@ -72,5 +73,6 @@ class treasuries(db.Model):
             "value":self.value,
             "tokens":self.tokens,
             "datestring":self.datestring,
-            "name":self.name
+            "name":self.name,
+            "symbol":self.symbol
         }
