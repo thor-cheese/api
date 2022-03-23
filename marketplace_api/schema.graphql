@@ -59,7 +59,7 @@ type TreasuryResult {
     errors: [String]
     mindate: Date
     maxdate: Date
-    events: Balance
+    events: [Balance]
 }
 
 type Query {
