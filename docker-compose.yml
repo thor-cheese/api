@@ -16,7 +16,7 @@ services:
     networks:
       - flask_network
 
-  proxy:
+  nginx:
     build: ./proxy
     container_name: nginx
     restart: always
