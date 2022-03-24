@@ -2,6 +2,7 @@ version: '3.8'
 
 services:
   web:
+    container_name: web
     build: ./marketplace_api
     restart: always
     # entrypoint: flask
@@ -35,7 +36,7 @@ services:
     networks:
       - flask_network
     depends_on:
-      - web  
+      - web
     # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
     image: certbot/certbot
