@@ -8,4 +8,5 @@ server {
         proxy_pass   http://web:5000/graphql;
     }
 
+
 }
