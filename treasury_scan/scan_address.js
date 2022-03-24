@@ -7,7 +7,7 @@ const cron = require('node-cron');
 const CoinGecko = require('coingecko-api');
 const BigNumber = require('bignumber.js');
 const { Treasury,sequelize } = require('./database.js');
-const {abiUSDC,abiUSDT,abiSENATE,abiPERION,abiSYNR} = require('./wallet-abis.js');
+const {abiUSDC,abiUSDT,abiSENATE,abiPERION,abiSYNR,abiSIDUS} = require('./wallet-abis.js');
 
 
 
@@ -97,7 +97,7 @@ async function getBalance(abi,tokenAddress,ticker,walletAddress) {
 
 async function run(){
 
-abis = [abiUSDC,abiUSDT,abiSENATE,abiPERION,abiSYNR]
+abis = [abiUSDC,abiUSDT,abiSENATE,abiPERION,abiSYNR,abiSIDUS]
 
 
 for (var i = 0; i < abis.length; i++) {
