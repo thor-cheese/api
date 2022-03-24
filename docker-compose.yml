@@ -33,7 +33,7 @@ services:
        max-file: "5"
        max-size: "10m"
     depends_on:
-      - web   
+      - flask_network
     # command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
   certbot:
     image: certbot/certbot
